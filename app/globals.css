@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: #0b0e13;
+  color: #e6edf3;
+}
+
+::selection {
+  background: rgba(94, 234, 212, 0.25);
+  color: #e6edf3;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Flow-dot animation along DAG edges */
+@keyframes flow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.edge-flow {
+  stroke-dasharray: 4 6;
+  animation: flow 1.2s linear infinite;
+}
+
+/* Subtle blinking status dot */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.status-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.node-card {
+  background: #12161d;
+  border: 1px solid #232a35;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.node-card:hover {
+  border-color: #5eead4;
+}
+
+.tag-pill {
+  border: 1px solid #232a35;
+  background: #12161d;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.tag-pill:hover {
+  border-color: #5eead4;
+  color: #5eead4;
+}
